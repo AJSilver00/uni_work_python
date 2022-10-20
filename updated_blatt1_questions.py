@@ -61,47 +61,126 @@ class Exercise_Sheet_1:
         # Do 1.1 again but using continue and break at the appropiate point in the program.
         print("========================================")
         print("This is the for loop:")
-        for i in range(10, -1):
+        for i in range(10, -1, -1):
             if i < 0:
                 break
             elif i == 6:
                 print("A sixpack left.")
-                i-=1
+                continue
             else:
                 print(i, "bottles of beer left.")
                 continue
 
+        print("========================================")
+        print("This is the while loop")
+        i = 10
+        while True:
+            if i < 0:
+                break
+            if i == 6:
+                print("A sixpack left.")
+            else:
+                print(i, "bottles of beer left.")
+            i -= 1
+            continue
 
+    def q1_4(self):
+        # Exercise 1.4
+        # Write the "beer" program again, but this time, make the printout line shorter at every decrement (ignore the last line for 0 bottles).
+        mystring = "bottles of beer on the wall"
 
-        # print("========================================")
-        # print("This is the while loop")
-        # i = 10
-        # while i > -1:
-        #     if i == 6:
-        #         print("A sixpack left.")
-        #     else:
-        #         print(i, "bottles of beer left.")
-        #     i -= 1
-
-    def q1_4(self, i):
         print("========================================")
         print("This is the for loop:")
+        x = 1
+        for i in range(10, -1, -1):
+            result_string = mystring[:-x]
+            print(str(i) + " " + result_string)
+            x += 1
+        print("========================================")
+        print("This is the while loop:")
+        x = 1
+        i = 10
+        while i > -1:
+            result_string = mystring[:-x]
+            print(str(i) + " " + result_string)
+            i-=1
+            x += 1
+
+    def q1_5(self):
+        # Repeat Ecercise 1.4, but this time, starting the countdown from 40. What happens? and why?
+        print("========================================")
+        print("INCORRECT SOLUTION:")
+        print("This is the for loop:")
+        x = 1
+        for i in range(40, -1, -1):
+            result_string = str(i) + " bottles of beer on the wall"
+            print(result_string[:-x])
+            x += 1
+        print("========================================")
+        print("INCORRECT SOLUTION:")
+        print("This is the while loop:")
+        x = 1
+        i = 40
+        while i > -1:
+            result_string = str(i) + " bottles of beer on the wall"
+            print(result_string[:-x])
+            i -= 1
+            x += 1
+        # Problem found was that 40 is too long so it completely erases the whole string including the bottle number!!
+
+        # NOW THE SOLUTION. SEE BELOW CODE:
+        mystring = "bottles of beer on the wall"
+        print("========================================")
+        print("CORRECT SOLUTION:")
+        print("This is the for loop:")
+        x = 1
+        for i in range(40, -1, -1):
+            result_string = mystring[:-x]
+            print(str(i) + " " + result_string)
+            x += 1
+        print("========================================")
+        print("CORRECT SOLUTION:")
+        print("This is the while loop:")
+        x = 1
+        i = 40
+        while i > -1:
+            result_string = mystring[:-x]
+            print(str(i) + " " + result_string)
+            i -= 1
+            x += 1
+
+    def q1_6(self):
+        mystring = "bottles of beer on the wall"
+        print("========================================")
+        print("This is the for loop:")
+        x = 1
+        for i in range(40, -1, -1):
+            result_string = mystring[:-x]
+            try:
+                lastChar = result_string[-1]
+                if lastChar == " ":
+                    x += 1  # if space then skip it.
+            except IndexError:
+                x +=1
+
+            print(str(i) + " " + result_string)
+            x += 1
 
         print("========================================")
         print("This is the while loop:")
+        x = 1
+        i = 40
+        while i > -1:
+            result_string = mystring[:-x]
+            try:
+                lastChar = result_string[-1]
+                if lastChar == " ":
+                    x += 1  # if space then skip it.
+            except IndexError:
+                x += 1
 
-    def q1_5(self, i):
-        print("========================================")
-        print("This is the for loop:")
+            print(str(i) + " " + result_string)
+            x += 1
+            i -= 1
 
-        print("========================================")
-        print("This is the while loop:")
-
-    def q1_(self, i):
-        print("========================================")
-        print("This is the for loop:")
-
-        print("========================================")
-        print("This is the while loop:")
-
-Exercise_Sheet_1().q1_3()
+Exercise_Sheet_1().q1_6()
